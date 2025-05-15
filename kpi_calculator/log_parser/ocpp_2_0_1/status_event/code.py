@@ -1,0 +1,15 @@
+# Copyright 2025, Battelle Energy Alliance, LLC, ALL RIGHTS RESERVED
+
+AVAILABLE = 'Available'
+OCCUPIED = 'Occupied'
+STARTED = 'Started'
+ENDED = 'Ended'
+CHARGING = 'Charging'
+CABLE_PLUGGED_IN = 'CablePluggedIn'
+CHARGING_STATE_CHANGED = 'ChargingStateChanged'
+ENERGY_LIMIT_REACHED = 'EnergyLimitReached'
+LOCAL = 'Local'
+REMOTE = 'Remote'
+SOC_LIMIT_REACHED = 'SOCLimitReached'
+ACCEPTED = 'Accepted'
+REJECTED = 'Rejected'
