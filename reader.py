@@ -56,6 +56,6 @@ def parse_logs(log_dir_path: str, output_file_path: str, preselected_standard: s
         log_parser.parse_log(os.path.join(log_dir_path, log_file_path), output_file_path, device_ID)
         
 if __name__ == "__main__": 
-    log_dir_path = r'insert/path/to/ocpp/log/ßdata'
+    log_dir_path = r'insert/path/to/ocpp/log/data'
     output_file_path = r'/insert/path/to/repo/interim-kpi-calculator/data/filtered_format'
     parse_logs(log_dir_path, output_file_path)
