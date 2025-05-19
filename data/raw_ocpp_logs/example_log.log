@@ -1,0 +1,143 @@
+Test Case Name : TC_E_44_CS 
+Test case description : Offline Behaviour - Stop transaction during offline period 
+Test Start Time : 17-05-2024 11:20:43 
+Test End Time : 17-05-2024 11:21:55 
+System Under Test (SUT) : CS 
+Communication Medium : WEBSOCKET
+OCPP Version : OCPP 2.0.1
+Build Number : Development
+Configuration: default_ci(a8b160a3229896e655ef2b861194ac8c) 
+Certification Profile : [Core] 
+----------------------------------------------------------------------------------------------------------
+[2024-05-17T09:20:43:730] [started_testcase] E_Transactions_CS - TC_E_44_CS-Offline Behaviour - Stop transaction during offline period
+[2024-05-17T09:20:43:731] [info] The value of resetBeforeTestcase is false
+[2024-05-17T09:20:43:731] [info] Start clearing internal states.
+[2024-05-17T09:20:43:732] [REQUEST]
+[2024-05-17T09:20:43:732] [msg-out] [2, "bb57931e-6999-4b61-89af-3ee1e2b914b7", "GetVariables", {"getVariableData":[{"component":{"name":"TxCtrlr"},"variable":{"name":"TxStartPoint"}}]}]
+[2024-05-17T09:20:43:732] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:43:792] [RESPONSE]
+[2024-05-17T09:20:43:792] [msg-in] [3, "bb57931e-6999-4b61-89af-3ee1e2b914b7", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "Authorized", "component": {"name": "TxCtrlr"}, "variable": {"name": "TxStartPoint"}}]}]
+[2024-05-17T09:20:43:812] [info] Received response message of the expected type.
+[2024-05-17T09:20:43:815] [REQUEST]
+[2024-05-17T09:20:43:815] [msg-out] [2, "6cd9c292-51d4-4980-90eb-484671110b7f", "GetVariables", {"getVariableData":[{"component":{"name":"TxCtrlr"},"variable":{"name":"TxStopPoint"}}]}]
+[2024-05-17T09:20:43:815] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:43:871] [RESPONSE]
+[2024-05-17T09:20:43:871] [msg-in] [3, "6cd9c292-51d4-4980-90eb-484671110b7f", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "Authorized", "component": {"name": "TxCtrlr"}, "variable": {"name": "TxStopPoint"}}]}]
+[2024-05-17T09:20:43:875] [info] Received response message of the expected type.
+[2024-05-17T09:20:43:875] [info] ========================= Starting Testcase Preparation ==========================
+[2024-05-17T09:20:43:876] [REQUEST]
+[2024-05-17T09:20:43:876] [msg-out] [2, "650e8810-ffa8-4816-a745-d9fab055cda0", "GetVariables", {"getVariableData":[{"component":{"name":"AuthCtrlr"},"variable":{"name":"LocalPreAuthorize"}}]}]
+[2024-05-17T09:20:43:876] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:43:932] [RESPONSE]
+[2024-05-17T09:20:43:932] [msg-in] [3, "650e8810-ffa8-4816-a745-d9fab055cda0", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "true", "component": {"name": "AuthCtrlr"}, "variable": {"name": "LocalPreAuthorize"}}]}]
+[2024-05-17T09:20:43:935] [info] Received response message of the expected type.
+[2024-05-17T09:20:43:935] [REQUEST]
+[2024-05-17T09:20:43:935] [msg-out] [2, "3b71243a-61d3-4af7-909d-51f88f15f884", "GetVariables", {"getVariableData":[{"component":{"name":"AuthCtrlr"},"variable":{"name":"LocalAuthorizeOffline"}}]}]
+[2024-05-17T09:20:43:935] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:43:991] [RESPONSE]
+[2024-05-17T09:20:43:991] [msg-in] [3, "3b71243a-61d3-4af7-909d-51f88f15f884", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "true", "component": {"name": "AuthCtrlr"}, "variable": {"name": "LocalAuthorizeOffline"}}]}]
+[2024-05-17T09:20:43:996] [info] Received response message of the expected type.
+[2024-05-17T09:20:43:997] [REQUEST]
+[2024-05-17T09:20:43:997] [msg-out] [2, "8f564b9e-a094-4fac-89d0-e63f3eaf4160", "GetVariables", {"getVariableData":[{"component":{"name":"OCPPCommCtrlr"},"variable":{"name":"OfflineThreshold"}}]}]
+[2024-05-17T09:20:43:997] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:44:058] [RESPONSE]
+[2024-05-17T09:20:44:058] [msg-in] [3, "8f564b9e-a094-4fac-89d0-e63f3eaf4160", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "120.0", "component": {"name": "OCPPCommCtrlr"}, "variable": {"name": "OfflineThreshold"}}]}]
+[2024-05-17T09:20:44:080] [info] Received response message of the expected type.
+[2024-05-17T09:20:44:083] [REQUEST]
+[2024-05-17T09:20:44:083] [msg-out] [2, "45ef1cb3-f9fe-4b9e-aced-26be0eea4750", "GetVariables", {"getVariableData":[{"component":{"name":"OCPPCommCtrlr"},"variable":{"name":"RetryBackOffWaitMinimum"}}]}]
+[2024-05-17T09:20:44:085] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:44:143] [RESPONSE]
+[2024-05-17T09:20:44:143] [msg-in] [3, "45ef1cb3-f9fe-4b9e-aced-26be0eea4750", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "60.0", "component": {"name": "OCPPCommCtrlr"}, "variable": {"name": "RetryBackOffWaitMinimum"}}]}]
+[2024-05-17T09:20:44:167] [info] Received response message of the expected type.
+[2024-05-17T09:20:44:168] [REQUEST]
+[2024-05-17T09:20:44:168] [msg-out] [2, "8c86f7fa-0159-4df1-8d88-299e96e9f116", "GetVariables", {"getVariableData":[{"component":{"name":"OCPPCommCtrlr"},"variable":{"name":"RetryBackOffRandomRange"}}]}]
+[2024-05-17T09:20:44:168] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:44:228] [RESPONSE]
+[2024-05-17T09:20:44:228] [msg-in] [3, "8c86f7fa-0159-4df1-8d88-299e96e9f116", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "0", "component": {"name": "OCPPCommCtrlr"}, "variable": {"name": "RetryBackOffRandomRange"}}]}]
+[2024-05-17T09:20:44:251] [info] Received response message of the expected type.
+[2024-05-17T09:20:44:252] [REQUEST]
+[2024-05-17T09:20:44:252] [msg-out] [2, "d9e7e56a-f5fd-443b-a97f-78efe2ec1aec", "GetVariables", {"getVariableData":[{"component":{"name":"TxCtrlr"},"variable":{"name":"StopTxOnInvalidId"}}]}]
+[2024-05-17T09:20:44:257] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:44:320] [RESPONSE]
+[2024-05-17T09:20:44:320] [msg-in] [3, "d9e7e56a-f5fd-443b-a97f-78efe2ec1aec", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "true", "component": {"name": "TxCtrlr"}, "variable": {"name": "StopTxOnInvalidId"}}]}]
+[2024-05-17T09:20:44:342] [info] Received response message of the expected type.
+[2024-05-17T09:20:44:344] [REQUEST]
+[2024-05-17T09:20:44:344] [msg-out] [2, "fb2efa69-9ce6-46db-ab70-7b933943b7e6", "GetVariables", {"getVariableData":[{"component":{"name":"AuthCtrlr"},"variable":{"name":"Enabled"}}]}]
+[2024-05-17T09:20:44:344] [info] Waiting for response message of type GetVariablesResponse
+[2024-05-17T09:20:44:402] [RESPONSE]
+[2024-05-17T09:20:44:402] [msg-in] [3, "fb2efa69-9ce6-46db-ab70-7b933943b7e6", {"getVariableResult": [{"attributeStatus": "Accepted", "attributeValue": "true", "component": {"name": "AuthCtrlr"}, "variable": {"name": "Enabled"}}]}]
+[2024-05-17T09:20:44:425] [info] Received response message of the expected type.
+[2024-05-17T09:20:44:431] [info] Entering state AuthorizedIdToken (evseId = 1)
+[2024-05-17T09:20:44:431] [prompt] Please authorize the transaction, with id: VALID, type is KeyCode, evseId is 1, connectorId is 1, 
+[2024-05-17T09:20:44:453] [api_dismissed] 8dea3450-b548-4264-b055-7b227d3e597c
+[2024-05-17T09:20:44:460] [info] Got 'continue' on the previous API request, continuing.
+[2024-05-17T09:20:44:461] [info] Waiting for request message of type AuthorizeRequest
+[2024-05-17T09:20:44:492] [REQUEST]
+[2024-05-17T09:20:44:492] [msg-in] [2, "5f094d9f-f070-4928-a856-c7d101b84f56", "Authorize", {"idToken": {"idToken": "VALID", "type": "KeyCode"}}]
+[2024-05-17T09:20:44:501] [info] Received request message of the expected type.
+[2024-05-17T09:20:44:503] [RESPONSE]
+[2024-05-17T09:20:44:503] [msg-out] [3, "5f094d9f-f070-4928-a856-c7d101b84f56", {"idTokenInfo":{"groupIdToken":{"idToken":"GROUP","type":"KeyCode"},"status":"Accepted"}}]
+[2024-05-17T09:20:44:508] [info] Waiting for request message of type TransactionEventRequest
+[2024-05-17T09:20:44:561] [REQUEST]
+[2024-05-17T09:20:44:561] [msg-in] [2, "e4edc11f-88e6-4733-af30-0421c70b6e1a", "TransactionEvent", {"eventType": "Started", "idToken": {"idToken": "VALID", "type": "KeyCode"}, "seqNo": 266, "timestamp": "2024-05-17T09:20:44Z", "transactionInfo": {"transactionId": "e80fb8b1-3fa4-4146-aa10-9dfbc72dfa36"}, "triggerReason": "Authorized"}]
+[2024-05-17T09:20:44:572] [info] Received request message of the expected type.
+[2024-05-17T09:20:44:573] [RESPONSE]
+[2024-05-17T09:20:44:573] [msg-out] [3, "e4edc11f-88e6-4733-af30-0421c70b6e1a", {"idTokenInfo":{"groupIdToken":{"idToken":"GROUP","type":"KeyCode"},"status":"Accepted"}}]
+[2024-05-17T09:20:44:574] [info] Reached state Authorized
+[2024-05-17T09:20:44:574] [info] Entering state EVConnectedPreSession (evseId = 1)
+[2024-05-17T09:20:44:574] [prompt] Please plug in your cable on EV side now.
+[2024-05-17T09:20:44:595] [api_dismissed] 058bff1a-5521-423a-b040-33a893d1b99b
+[2024-05-17T09:20:44:596] [info] Got 'continue' on the previous API request, continuing.
+[2024-05-17T09:20:44:597] [prompt] Please plug in your cable on Charging Station side now.
+[2024-05-17T09:20:44:617] [api_dismissed] 46674bcd-ade9-4ed8-a9d5-f972d3e875ad
+[2024-05-17T09:20:44:617] [info] Got 'continue' on the previous API request, continuing.
+[2024-05-17T09:20:44:618] [info] We are entering the interleave statement
+[2024-05-17T09:20:44:618] [info] Waiting for request messages of type StatusNotificationRequest, NotifyEventRequest and TransactionEventRequest. Not all message types are mandatory, as some are optional. Please refer to the testcase document to see which ones are mandatory.
+[2024-05-17T09:20:44:659] [REQUEST]
+[2024-05-17T09:20:44:659] [msg-in] [2, "e8b67da0-4b23-48b4-a214-93c9b37b3ac3", "StatusNotification", {"connectorId": 1, "connectorStatus": "Occupied", "evseId": 1, "timestamp": "2024-05-17T09:20:44Z"}]
+[2024-05-17T09:20:44:679] [RESPONSE]
+[2024-05-17T09:20:44:679] [msg-out] [3, "e8b67da0-4b23-48b4-a214-93c9b37b3ac3", {}]
+[2024-05-17T09:20:44:680] [info] Waiting for request message of type TransactionEventRequest
+[2024-05-17T09:20:44:741] [REQUEST]
+[2024-05-17T09:20:44:741] [msg-in] [2, "610c7fb9-a08b-460c-82b0-acdf0865a1f7", "TransactionEvent", {"eventType": "Updated", "evse": {"connectorId": 1, "id": 1}, "seqNo": 267, "timestamp": "2024-05-17T09:20:44Z", "transactionInfo": {"chargingState": "EVConnected", "transactionId": "e80fb8b1-3fa4-4146-aa10-9dfbc72dfa36"}, "triggerReason": "CablePluggedIn"}]
+[2024-05-17T09:20:44:772] [RESPONSE]
+[2024-05-17T09:20:44:772] [msg-out] [3, "610c7fb9-a08b-460c-82b0-acdf0865a1f7", {}]
+[2024-05-17T09:20:44:774] [info] Reached state EVConnectedPreSession
+[2024-05-17T09:20:44:774] [info] Entering state EnergyTransferStarted (evseId = 1)
+[2024-05-17T09:20:44:774] [info] All checks cleared for EnergyTransferStarted
+[2024-05-17T09:20:44:774] [info] Waiting for the TransactionEvent 'ChargingStateChanged -> Charging'
+[2024-05-17T09:20:44:775] [info] Waiting for request message of type TransactionEventRequest
+[2024-05-17T09:20:44:825] [REQUEST]
+[2024-05-17T09:20:44:825] [msg-in] [2, "1376dd1d-276c-405a-b8bb-2accc26e5eae", "TransactionEvent", {"eventType": "Updated", "seqNo": 268, "timestamp": "2024-05-17T09:20:44Z", "transactionInfo": {"chargingState": "Charging", "transactionId": "e80fb8b1-3fa4-4146-aa10-9dfbc72dfa36"}, "triggerReason": "ChargingStateChanged"}]
+[2024-05-17T09:20:44:837] [RESPONSE]
+[2024-05-17T09:20:44:837] [msg-out] [3, "1376dd1d-276c-405a-b8bb-2accc26e5eae", {}]
+[2024-05-17T09:20:44:838] [info] Reached state EnergyTransferStarted
+[2024-05-17T09:20:44:838] [info] ========================== Starting Main Testcase Steps ==========================
+[2024-05-17T09:20:44:838] [info] The OCTT closes the WebSocket connection AND does not accept a reconnect.
+[2024-05-17T09:20:44:838] [info] Disconnected from System Under Test
+[2024-05-17T09:20:45:005] [prompt] Please authorize the transaction, with id: VALID, type is KeyCode, evseId is 1, connectorId is 1, 
+[2024-05-17T09:20:45:007] [info] Ignoring event: SUT_DISCONNECTED
+[2024-05-17T09:20:45:028] [api_dismissed] 76e4608a-81dd-4359-b152-2735bf577dac
+[2024-05-17T09:20:45:030] [info] Got 'continue' on the previous API request, continuing.
+[2024-05-17T09:20:45:031] [prompt] Please unplug your cable on Charging Station side now.
+[2024-05-17T09:20:45:053] [api_dismissed] 96d74f6d-4803-40c1-bba4-41909154a32e
+[2024-05-17T09:20:45:056] [info] Got 'continue' on the previous API request, continuing.
+[2024-05-17T09:20:45:056] [prompt] Please unplug your cable on EV side now.
+[2024-05-17T09:20:45:081] [api_dismissed] c3b794c2-b681-4709-908b-af7d76ba98de
+[2024-05-17T09:20:45:082] [info] Got 'continue' on the previous API request, continuing.
+[2024-05-17T09:20:45:082] [info] Waiting for 57 seconds.
+[2024-05-17T09:21:43:003] [info] The OCTT accepts the reconnection attempt from the Charging Station.
+[2024-05-17T09:21:43:004] [info] Using Security Profile: 0
+[2024-05-17T09:21:45:073] [info] Successfully connected to System Under Test
+[2024-05-17T09:21:45:075] [info] Waiting for request messages of type StatusNotificationRequest and TransactionEventRequest. Not all message types are mandatory, as some are optional. Please refer to the testcase document to see which ones are mandatory.
+[2024-05-17T09:21:45:137] [REQUEST]
+[2024-05-17T09:21:45:137] [msg-in] [2, "fcf0a7b1-2e0c-4531-abb7-7abbbb10a740", "TransactionEvent", {"eventType": "Ended", "evse": {"connectorId": 1, "id": 1}, "idToken": {"idToken": "VALID", "type": "KeyCode"}, "offline": true, "seqNo": 269, "timestamp": "2024-05-17T09:21:45Z", "transactionInfo": {"chargingState": "EVConnected", "stoppedReason": "Local", "transactionId": "e80fb8b1-3fa4-4146-aa10-9dfbc72dfa36"}, "triggerReason": "StopAuthorized"}]
+[2024-05-17T09:21:45:161] [RESPONSE]
+[2024-05-17T09:21:45:161] [msg-out] [3, "fcf0a7b1-2e0c-4531-abb7-7abbbb10a740", {"idTokenInfo":{"status":"Accepted"}}]
+[2024-05-17T09:21:55:076] [info] The value of resetAfterTestcase is false
+[2024-05-17T09:21:55:184] [verdict] PASS
+[2024-05-17T09:21:55:187] [info] The test case has ended.
+[2024-05-17T09:21:55:187] [stopped_testcase] 
+
+
+Test case result : PASS

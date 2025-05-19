@@ -50,7 +50,7 @@ STANDARD_SUBSTRINGS = {
                         } 
 
 STANDARD_DATE_STRING_POS = {
-                        'explicit' : StandardDateStringPos(1, 12),
+                        'explicit' : StandardDateStringPos(1, 20),
                         'verbose' : StandardDateStringPos(0, 24)
                     }
 

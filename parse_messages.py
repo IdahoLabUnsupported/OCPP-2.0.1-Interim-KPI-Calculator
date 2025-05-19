@@ -15,6 +15,8 @@ from kpi_calculator.log_parser.ocpp_2_0_1 import message as message_structure
 from kpi_calculator.log_parser.ocpp_2_0_1.status_event import type as event_type, code
 from kpi_calculator.utils import time_ops
 
+KPI_CALC_REPO_PATH = 'insert/path/to/repo/here'
+
 AUTHORIZE_TIME_THRESHOLD_SECONDS = timedelta(minutes=5).total_seconds()
 
 GENERAL_EVENT_TYPES = [event_type.AUTHORIZE_RESPONSE, event_type.REQUEST_START_TRANSACTION_RESPONSE, 
@@ -315,8 +317,8 @@ def read_as_json(s: str) -> dict:
     return string_json #TODO Change this to just return the string_json(only the message is expected from external) json.loads(string_json['msg'])
 
 if __name__ == "__main__": 
-    raw_log_dir = r"insert/path/to/repo/interim-kpi-calculator/data/split"
-    formatted_log_dir = r"insert/path/to/repo/interim-kpi-calculator/data/formatted"
+    raw_log_dir = KPI_CALC_REPO_PATH + "/interim-kpi-calculator/data/split_logs"
+    formatted_log_dir = KPI_CALC_REPO_PATH + "/interim-kpi-calculator/data/parsed_logs"
     if not os.path.exists(formatted_log_dir): 
         os.mkdir(formatted_log_dir)
     concatenating_dfs = []

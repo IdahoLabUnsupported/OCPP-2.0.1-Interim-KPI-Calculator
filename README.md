@@ -4,13 +4,15 @@ This project was designed to take OCPP 2.0.1 log data and calculate the aggregat
 
 ## Description
 
-The project is split into four pieces. The first is a raw OCPP log parser. The second is a file splitter. The third is a message parser. The final piece is the Interim KPI calculator. 
+The project is split into four pieces that need to be ran sequencially. The first is a raw OCPP log parser. The second is a file splitter. The third is a message parser. The final piece is the Interim KPI calculator. 
 
 ### OCPP Log Parser
 
 reader.py
 
-The OCPP log parser was created from two different formats of raw OCPP 2.0.1 data. Its intended purpose is to extract device IDs and OCPP event messages from nontabular text logs. The parser looks for specific substrings in the logs to identify which of the two "standards" it should select from. It is possible that your OCPP 2.0.1 log format is not compatible with the parser. It is then recommended to parse your own data into the tabular format provided below. This format is the result of the OCPP log parser's processes.    
+The OCPP log parser was created from two different formats of raw OCPP 2.0.1 data. Its intended purpose is to extract device IDs and OCPP event messages from nontabular text logs. The parser looks for specific substrings in the logs to identify which of the two "standards" it should select from. It is possible that your OCPP 2.0.1 log format is not compatible with the parser. It is then recommended to parse your own data into the tabular format provided below. For example, if the OCPP log you have doesn't contain a date, you will need to add a date to the timestamp. Refer to the the example file included in the data folder:  "/interim-kpi-calculator/data/raw_ocpp_logs/example_log.log".
+
+This format is the result of the OCPP log parser's processes.    
 
 device_ID | message | timestamp
 --- | --- | ---
@@ -49,6 +51,9 @@ calculator.py
 
 The KPI calculator takes the parsed messages, as a single file, and calculates the KPI from that data. An excel file is produced with four sheets. These contain the metrics for Session Success, Charge Start Success, Charge End Success, and Charge Start Time. It includes the metrics for the different equations in the Interim KPI Implementation Guide as well as a weighted sum of the different equations for each KPI (excluding Charge End Success and Charge Start Time). 
 
+***To run this script you must identify a parsed input file and also include the start and end range in the CLI command as arguments or change the input file on line 21 and the date ranges on lines 19 & 20.***
+
+
 ## Dependencies
 
 * python 3.12
@@ -59,12 +64,14 @@ The KPI calculator takes the parsed messages, as a single file, and calculates t
 
 ## Executing program
 
+Ensure the KPI_CALC_REPO_PATH is set proper in reader.py, split_data_into_charger_files.py, parse_messages.py, and calculator.py.
+
 The following commands are meant to be executed in order: 
 
 python reader.py (if your OCPP conforms to the standards present in the code)
 python split_data_into_charger_files.py
 python parse_messages.py
-python calculator.py --start_date <string of the start date of the data> --end_date <string of the end date of the date>
+python calculator.py --start_date <string of the start date of the data> --end_date <string of the end date of the date> --pf <string of parsed file used as input for calculations>
 
 ## Assumptions
 
@@ -85,6 +92,7 @@ The implementation guide cannot answer for all the edge cases that arise from th
 ## Authors
 
 Paden Rumsey (paden.rumsey@inl.gov)
+Casey Quinn (casey.quinn@inl.gov)
 
 ## Version History
 

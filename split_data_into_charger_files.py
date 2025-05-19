@@ -3,10 +3,11 @@
 import os
 import pandas as pd
 
+KPI_CALC_REPO_PATH = 'insert/path/to/repo/here'
 
 if __name__ == "__main__": 
-    raw_log_dir = r"insert/path/to/repo/interim-kpi-calculator/data/filtered_format"
-    output_dir = r"insert/path/to/repo/interim-kpi-calculator/data/split"
+    raw_log_dir = KPI_CALC_REPO_PATH + "/interim-kpi-calculator/data/cleaned_logs"
+    output_dir = KPI_CALC_REPO_PATH + "/interim-kpi-calculator/data/split_logs"
     if not os.path.exists(output_dir): 
         os.mkdir(output_dir)
     dfs = []

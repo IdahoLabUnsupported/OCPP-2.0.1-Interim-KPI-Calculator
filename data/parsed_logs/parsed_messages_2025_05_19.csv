@@ -1,0 +1,7 @@
+device_ID,ID_token,transaction_ID,event_type,event_code,trigger_reason,timestamp,response_timestamp
+0,VALID,-1.0,Authorize,Accepted,,2024-05-17T09:20:44,2024-05-17T09:20:44
+0,VALID,e80fb8b1-3fa4-4146-aa10-9dfbc72dfa36,TransactionEvent,Started,Accepted,2024-05-17T09:20:44,2024-05-17T09:20:44
+0,,,StatusNotification,Occupied,,2024-05-17T09:20:44,
+0,,e80fb8b1-3fa4-4146-aa10-9dfbc72dfa36,TransactionEvent,EVConnected,CablePluggedIn,2024-05-17T09:20:44,
+0,,e80fb8b1-3fa4-4146-aa10-9dfbc72dfa36,TransactionEvent,Charging,ChargingStateChanged,2024-05-17T09:20:44,
+0,VALID,e80fb8b1-3fa4-4146-aa10-9dfbc72dfa36,TransactionEvent,Ended,Local,2024-05-17T09:21:45,

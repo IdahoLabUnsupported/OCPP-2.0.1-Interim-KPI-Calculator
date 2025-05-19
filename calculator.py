@@ -16,8 +16,12 @@ from kpi_calculator.printing.KPI_printer import KPIExcelWriter
 from kpi_calculator.log_parser.ocpp_2_0_1 import transaction_parser
 from kpi_calculator.utils import fraction, time_ops
 
-START_RANGE = '2024-11-03'
-END_RANGE = '2024-11-09'
+KPI_CALC_REPO_PATH = 'insert/path/to/repo/here'
+
+PARSED_INPUT_FILE_NAME = 'parsed_messages_2025_05_19.csv'
+
+START_RANGE = '2024-05-01'
+END_RANGE = '2024-05-30'
 
 LOGGING = True
     
@@ -240,13 +244,21 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog='interim-kpi-calculator')
     parser.add_argument('--start_date', '-s', help='start date of the given dataset (this is used to truncate overlapping days)')
     parser.add_argument('--end_date', '-e', help='end date of the given dataset (this is used to truncate overlapping days)')
+    parser.add_argument('--parsed_file', '-pf', help='parsed input file to analyze with the kpi calculator')
     args = parser.parse_args()
 
-    START_RANGE = args.start_date
-    END_RANGE = args.end_date
+    if(args.parsed_file != None):
+        PARSED_INPUT_FILE_NAME = args.parsed_file
 
-    input_data_path = r"insert/path/to/repo/interim-kpi-calculator/data/formatted/parsed_messages_2025_04_24.csv"
-    output_data_dir = r"insert/path/to/repo/interim-kpi-calculator/data/KPIs"
+    if(args.start_date != None):
+        START_RANGE = args.start_date
+
+    if(args.end_date != None):
+        END_RANGE = args.end_date
+
+    input_data_path = KPI_CALC_REPO_PATH + "/interim-kpi-calculator/data/parsed_logs/" + PARSED_INPUT_FILE_NAME
+    output_data_dir = KPI_CALC_REPO_PATH + "/interim-kpi-calculator/data/KPIs"
+
     if not os.path.exists(output_data_dir):
         os.mkdir(output_data_dir)
     df = pd.read_csv(input_data_path)
