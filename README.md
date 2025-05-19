@@ -64,7 +64,7 @@ The KPI calculator takes the parsed messages, as a single file, and calculates t
 
 ## Executing program
 
-Ensure the KPI_CALC_REPO_PATH is set proper in reader.py, split_data_into_charger_files.py, parse_messages.py, and calculator.py.
+Ensure the KPI_CALC_REPO_PATH is set properly in reader.py, split_data_into_charger_files.py, parse_messages.py, and calculator.py.
 
 The following commands are meant to be executed in order: 
 
@@ -90,8 +90,7 @@ The implementation guide cannot answer for all the edge cases that arise from th
 * A transaction must have a valid start condition (as enumerated in sections 3.5.1 and 3.5.3 in the Interim KPI Implementation Guide) in order to record a TransactionEventRequest with a valid stop trigger reason for Session Success. This prevents potential values being greater than 1 or divide by 0 errors.  
 
 ## Authors
-
-Paden Rumsey (paden.rumsey@inl.gov)
+Paden Rumsey (paden.rumsey@inl.gov) <br>
 Casey Quinn (casey.quinn@inl.gov)
 
 ## Version History
