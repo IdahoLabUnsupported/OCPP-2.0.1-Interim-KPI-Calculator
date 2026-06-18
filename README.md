@@ -1,3 +1,10 @@
+> [!WARNING]
+> **This repository has been archived and is no longer maintained.**
+> The code is provided for historical reference and may contain unpatched
+> or unknown vulnerabilities. It should not be used in production systems.
+
+---
+
 # OCPP 2.0.1 Interim KPI Calculator
 
 This project was designed to take OCPP 2.0.1 log data and calculate the aggregate KPIs for the given data. 
